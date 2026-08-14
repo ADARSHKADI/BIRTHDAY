@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +9,13 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>Student Dashboard</title>
+<title>Student Birthday Dashboard</title>
 
 <style>
+
+/* =====================================================
+   BASIC
+===================================================== */
 
 * {
   box-sizing: border-box;
@@ -18,15 +23,18 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, "Noto Sans", sans-serif;
   background: #f3f6fb;
   color: #1f2937;
 }
 
-/* ================= HEADER ================= */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header {
-  background: linear-gradient(135deg,#2563eb,#4f46e5);
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
   color: white;
   padding: 22px 20px;
   box-shadow: 0 3px 15px rgba(0,0,0,.15);
@@ -42,6 +50,12 @@ body {
   font-weight: 700;
 }
 
+.school-address {
+  margin-top: 5px;
+  font-size: 14px;
+  opacity: .95;
+}
+
 .academic {
   margin-top: 6px;
   font-size: 15px;
@@ -53,7 +67,10 @@ body {
   font-size: 14px;
 }
 
-/* ================= CONTAINER ================= */
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
 
 .container {
   max-width: 1250px;
@@ -61,11 +78,14 @@ body {
   padding: 20px;
 }
 
-/* ================= STATS ================= */
+
+/* =====================================================
+   STATISTICS
+===================================================== */
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -104,7 +124,10 @@ body {
   border-left: 5px solid #f59e0b;
 }
 
-/* ================= BUTTONS ================= */
+
+/* =====================================================
+   MAIN BUTTONS
+===================================================== */
 
 .buttons {
   display: flex;
@@ -117,15 +140,16 @@ button {
   border: none;
   padding: 12px 18px;
   border-radius: 9px;
-  background: #2563eb;
   color: white;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  transition: .2s;
 }
 
 button:hover {
   opacity: .9;
+  transform: translateY(-1px);
 }
 
 .birthday-btn {
@@ -144,7 +168,10 @@ button:hover {
   background: #6b7280;
 }
 
-/* ================= SECTION ================= */
+
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 .section {
   background: white;
@@ -160,17 +187,24 @@ button:hover {
   margin-bottom: 15px;
 }
 
-/* ================= BIRTHDAY TITLE ================= */
+
+/* =====================================================
+   BIRTHDAY HEADER
+===================================================== */
 
 .birthday-title {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .cake {
   font-size: 32px;
+}
+
+.birthday-date-box {
+  flex: 1;
 }
 
 .birthday-count {
@@ -182,7 +216,40 @@ button:hover {
   font-weight: bold;
 }
 
-/* ================= TABLE ================= */
+
+/* =====================================================
+   CARD BUTTONS
+===================================================== */
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.select-btn {
+  background: #6366f1;
+}
+
+.clear-btn {
+  background: #64748b;
+}
+
+.card-btn {
+  background: linear-gradient(
+    135deg,
+    #ec4899,
+    #f43f5e
+  );
+  font-size: 15px;
+  padding: 13px 20px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
 
 .table-container {
   width: 100%;
@@ -192,7 +259,7 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 750px;
+  min-width: 760px;
 }
 
 th {
@@ -212,7 +279,16 @@ tr:hover {
   background: #f9fafb;
 }
 
-/* ================= SEARCH ================= */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
 
 .search-area {
   display: flex;
@@ -232,7 +308,10 @@ tr:hover {
   border-color: #2563eb;
 }
 
-/* ================= CLASS ================= */
+
+/* =====================================================
+   CLASS
+===================================================== */
 
 .class-area {
   display: flex;
@@ -248,15 +327,22 @@ select {
   font-size: 15px;
 }
 
-/* ================= EMPTY ================= */
+
+/* =====================================================
+   EMPTY
+===================================================== */
 
 .empty {
   text-align: center;
   padding: 35px;
   color: #6b7280;
+  font-size: 16px;
 }
 
-/* ================= LOADER ================= */
+
+/* =====================================================
+   LOADER
+===================================================== */
 
 .loader {
   position: fixed;
@@ -294,7 +380,10 @@ select {
 
 }
 
-/* ================= MOBILE ================= */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:800px) {
 
@@ -324,6 +413,7 @@ select {
 
 }
 
+
 @media(max-width:500px) {
 
   .section {
@@ -332,6 +422,14 @@ select {
 
   .section-title {
     font-size: 18px;
+  }
+
+  .birthday-title {
+    align-items: flex-start;
+  }
+
+  .birthday-count {
+    margin-left: auto;
   }
 
   .search-area,
@@ -344,9 +442,16 @@ select {
     width: 100%;
   }
 
+  .card-actions button {
+    width: 100%;
+  }
+
 }
 
-/* ================= PRINT ================= */
+
+/* =====================================================
+   PRINT DASHBOARD
+===================================================== */
 
 @media print {
 
@@ -363,6 +468,7 @@ select {
   .buttons,
   .search-section,
   .class-section,
+  .card-actions,
   .loader {
     display: none !important;
   }
@@ -382,7 +488,9 @@ select {
 <body>
 
 
-<!-- ================= LOADER ================= -->
+<!-- ===================================================
+     LOADER
+=================================================== -->
 
 <div class="loader" id="loader">
 
@@ -390,14 +498,18 @@ select {
 
     <div class="spinner"></div>
 
-    <div>Loading...</div>
+    <div id="loaderText">
+      Loading...
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- ================= HEADER ================= -->
+<!-- ===================================================
+     HEADER
+=================================================== -->
 
 <header class="header">
 
@@ -407,12 +519,15 @@ select {
       🏫 P.M.G. Thakar Adarsh High School, Kadi
     </div>
 
+    <div class="school-address">
+      Near Bahuchar Mataji Temple, Detroj Road, Kadi
+    </div>
+
     <div class="academic">
       Academic Year: 2026-27
     </div>
 
-    <div class="today-date"
-         id="todayDate">
+    <div class="today-date" id="todayDate">
       Loading...
     </div>
 
@@ -424,9 +539,12 @@ select {
 <div class="container">
 
 
-<!-- ================= STATISTICS ================= -->
+<!-- ===================================================
+     STATISTICS
+=================================================== -->
 
 <div class="stats">
+
 
   <div class="stat-card blue">
 
@@ -486,36 +604,42 @@ select {
 </div>
 
 
-<!-- ================= BUTTONS ================= -->
+<!-- ===================================================
+     MAIN BUTTONS
+=================================================== -->
 
 <div class="buttons">
 
-  <button class="birthday-btn"
-          onclick="loadTodayBirthday()">
+  <button
+    class="birthday-btn"
+    onclick="loadTodayBirthday()">
 
     🎂 Today's Birthday
 
   </button>
 
 
-  <button class="tomorrow-btn"
-          onclick="loadTomorrowBirthday()">
+  <button
+    class="tomorrow-btn"
+    onclick="loadTomorrowBirthday()">
 
     📅 Tomorrow's Birthday
 
   </button>
 
 
-  <button class="refresh-btn"
-          onclick="loadDashboard()">
+  <button
+    class="refresh-btn"
+    onclick="loadDashboard()">
 
     🔄 Refresh
 
   </button>
 
 
-  <button class="print-btn"
-          onclick="window.print()">
+  <button
+    class="print-btn"
+    onclick="window.print()">
 
     🖨️ Print
 
@@ -524,9 +648,12 @@ select {
 </div>
 
 
-<!-- ================= BIRTHDAY ================= -->
+<!-- ===================================================
+     TODAY BIRTHDAY SECTION
+=================================================== -->
 
 <div class="section">
+
 
   <div class="birthday-title">
 
@@ -534,7 +661,8 @@ select {
       🎂
     </div>
 
-    <div>
+
+    <div class="birthday-date-box">
 
       <div class="section-title"
            style="margin:0">
@@ -543,9 +671,12 @@ select {
 
       </div>
 
-      <div id="birthdayDate"></div>
+      <div id="birthdayDate">
+        -
+      </div>
 
     </div>
+
 
     <div class="birthday-count"
          id="birthdayCount">
@@ -553,6 +684,41 @@ select {
       0 Students
 
     </div>
+
+  </div>
+
+
+  <!-- CARD ACTIONS -->
+
+  <div class="card-actions">
+
+
+    <button
+      class="select-btn"
+      onclick="selectAllBirthdays()">
+
+      ☑ Select All
+
+    </button>
+
+
+    <button
+      class="clear-btn"
+      onclick="clearAllBirthdays()">
+
+      ☐ Clear All
+
+    </button>
+
+
+    <button
+      class="card-btn"
+      onclick="generateBirthdayCards()">
+
+      🎂 Generate Birthday Cards
+
+    </button>
+
 
   </div>
 
@@ -568,9 +734,12 @@ select {
 </div>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- ===================================================
+     SEARCH SECTION
+=================================================== -->
 
 <div class="section search-section">
+
 
   <div class="section-title">
 
@@ -581,11 +750,15 @@ select {
 
   <div class="search-area">
 
+
     <input
       type="text"
       id="searchInput"
       placeholder="Name / Roll / GR / Mobile"
-      onkeydown="if(event.key==='Enter') searchStudent()">
+      onkeydown="
+        if(event.key==='Enter')
+        searchStudent()
+      ">
 
 
     <button onclick="searchStudent()">
@@ -593,6 +766,7 @@ select {
       Search
 
     </button>
+
 
   </div>
 
@@ -605,9 +779,12 @@ select {
 </div>
 
 
-<!-- ================= CLASS ================= -->
+<!-- ===================================================
+     CLASS SECTION
+=================================================== -->
 
 <div class="section class-section">
+
 
   <div class="section-title">
 
@@ -617,6 +794,7 @@ select {
 
 
   <div class="class-area">
+
 
     <select id="classSelect">
 
@@ -633,6 +811,7 @@ select {
 
     </button>
 
+
   </div>
 
 
@@ -643,9 +822,12 @@ select {
 </div>
 
 
-<!-- ================= UPCOMING ================= -->
+<!-- ===================================================
+     UPCOMING BIRTHDAYS
+=================================================== -->
 
 <div class="section">
+
 
   <div class="section-title">
 
@@ -670,10 +852,12 @@ select {
 
 
 /* =====================================================
-   IMPORTANT
+   APPS SCRIPT API URL
 ===================================================== */
 
 /*
+ * IMPORTANT:
+ *
  * यहाँ अपना Apps Script Web App URL डालें.
  *
  * Example:
@@ -686,10 +870,21 @@ const API_URL =
 
 
 /* =====================================================
+   CURRENT BIRTHDAY DATA
+===================================================== */
+
+window.currentBirthdayStudents = [];
+
+
+/* =====================================================
    LOADER
 ===================================================== */
 
-function showLoader() {
+function showLoader(text = "Loading...") {
+
+  document
+    .getElementById("loaderText")
+    .innerText = text;
 
   document
     .getElementById("loader")
@@ -734,13 +929,19 @@ async function api(action, params = {}) {
 
 
   const response =
-    await fetch(url.toString());
+    await fetch(
+      url.toString(),
+      {
+        method: "GET",
+        cache: "no-store"
+      }
+    );
 
 
   if (!response.ok) {
 
     throw new Error(
-      "API connection failed"
+      "API connection failed."
     );
 
   }
@@ -778,49 +979,62 @@ function showCurrentDate() {
 
 
 /* =====================================================
-   DASHBOARD
+   LOAD DASHBOARD
 ===================================================== */
 
 async function loadDashboard() {
 
   try {
 
-    showLoader();
+    showLoader(
+      "Loading Dashboard..."
+    );
 
 
     const data =
-      await api("dashboard");
+      await api(
+        "dashboard"
+      );
 
 
     if (!data.success) {
 
       throw new Error(
-        data.error || "Dashboard error"
+        data.error ||
+        "Dashboard Error"
       );
 
     }
 
 
     document
-      .getElementById("totalStudents")
+      .getElementById(
+        "totalStudents"
+      )
       .innerText =
         data.totalStudents;
 
 
     document
-      .getElementById("totalClasses")
+      .getElementById(
+        "totalClasses"
+      )
       .innerText =
         data.totalClasses;
 
 
     document
-      .getElementById("todayBirthdayCount")
+      .getElementById(
+        "todayBirthdayCount"
+      )
       .innerText =
         data.todayBirthdays;
 
 
     document
-      .getElementById("tomorrowBirthdayCount")
+      .getElementById(
+        "tomorrowBirthdayCount"
+      )
       .innerText =
         data.tomorrowBirthdays;
 
@@ -839,7 +1053,7 @@ async function loadDashboard() {
     hideLoader();
 
     alert(
-      "Dashboard Error:\n" +
+      "Dashboard Error:\n\n" +
       error.message
     );
 
@@ -849,14 +1063,16 @@ async function loadDashboard() {
 
 
 /* =====================================================
-   TODAY BIRTHDAY
+   LOAD TODAY BIRTHDAY
 ===================================================== */
 
 async function loadTodayBirthday() {
 
   try {
 
-    showLoader();
+    showLoader(
+      "Loading Today's Birthday..."
+    );
 
 
     const data =
@@ -866,8 +1082,7 @@ async function loadTodayBirthday() {
 
 
     renderBirthdayTable(
-      data,
-      "Today's Birthday"
+      data
     );
 
 
@@ -880,7 +1095,7 @@ async function loadTodayBirthday() {
     hideLoader();
 
     alert(
-      "Birthday Error:\n" +
+      "Birthday Error:\n\n" +
       error.message
     );
 
@@ -890,14 +1105,16 @@ async function loadTodayBirthday() {
 
 
 /* =====================================================
-   TOMORROW BIRTHDAY
+   LOAD TOMORROW BIRTHDAY
 ===================================================== */
 
 async function loadTomorrowBirthday() {
 
   try {
 
-    showLoader();
+    showLoader(
+      "Loading Tomorrow's Birthday..."
+    );
 
 
     const data =
@@ -907,8 +1124,7 @@ async function loadTomorrowBirthday() {
 
 
     renderBirthdayTable(
-      data,
-      "Tomorrow's Birthday"
+      data
     );
 
 
@@ -921,7 +1137,7 @@ async function loadTomorrowBirthday() {
     hideLoader();
 
     alert(
-      "Birthday Error:\n" +
+      "Birthday Error:\n\n" +
       error.message
     );
 
@@ -934,13 +1150,12 @@ async function loadTomorrowBirthday() {
    RENDER BIRTHDAY TABLE
 ===================================================== */
 
-function renderBirthdayTable(
-  data,
-  title
-) {
+function renderBirthdayTable(data) {
 
   document
-    .getElementById("birthdayDate")
+    .getElementById(
+      "birthdayDate"
+    )
     .innerText =
       data.date +
       " • " +
@@ -948,7 +1163,9 @@ function renderBirthdayTable(
 
 
   document
-    .getElementById("birthdayCount")
+    .getElementById(
+      "birthdayCount"
+    )
     .innerText =
       data.total +
       " Students";
@@ -958,6 +1175,14 @@ function renderBirthdayTable(
     document.getElementById(
       "birthdayTable"
     );
+
+
+  /*
+   * Save current students
+   */
+
+  window.currentBirthdayStudents =
+    data.students || [];
 
 
   if (
@@ -990,6 +1215,15 @@ function renderBirthdayTable(
 
           <tr>
 
+            <th>
+
+              <input
+                type="checkbox"
+                id="selectAllCheckbox"
+                onchange="toggleAllBirthdays(this)">
+
+            </th>
+
             <th>Roll</th>
 
             <th>GR</th>
@@ -1012,33 +1246,50 @@ function renderBirthdayTable(
 
 
   data.students.forEach(
-    function(student) {
+    function(student, index) {
 
       html += `
 
         <tr>
 
           <td>
+
+            <input
+              type="checkbox"
+              class="birthday-checkbox"
+              data-index="${index}">
+
+          </td>
+
+
+          <td>
             ${safe(student.roll)}
           </td>
+
 
           <td>
             ${safe(student.gr)}
           </td>
 
+
           <td>
+
             <strong>
               ${safe(student.name)}
             </strong>
+
           </td>
+
 
           <td>
             ${safe(student.className)}
           </td>
 
+
           <td>
             ${safe(student.dob)}
           </td>
+
 
           <td>
             ${safe(student.mobile)}
@@ -1070,6 +1321,819 @@ function renderBirthdayTable(
 
 
 /* =====================================================
+   SELECT ALL
+===================================================== */
+
+function selectAllBirthdays() {
+
+  const boxes =
+    document.querySelectorAll(
+      ".birthday-checkbox"
+    );
+
+
+  if (boxes.length === 0) {
+
+    alert(
+      "आज कोई Birthday student नहीं है."
+    );
+
+    return;
+
+  }
+
+
+  boxes.forEach(function(box) {
+
+    box.checked = true;
+
+  });
+
+
+  const master =
+    document.getElementById(
+      "selectAllCheckbox"
+    );
+
+
+  if (master) {
+
+    master.checked = true;
+
+  }
+
+}
+
+
+/* =====================================================
+   CLEAR ALL
+===================================================== */
+
+function clearAllBirthdays() {
+
+  const boxes =
+    document.querySelectorAll(
+      ".birthday-checkbox"
+    );
+
+
+  boxes.forEach(function(box) {
+
+    box.checked = false;
+
+  });
+
+
+  const master =
+    document.getElementById(
+      "selectAllCheckbox"
+    );
+
+
+  if (master) {
+
+    master.checked = false;
+
+  }
+
+}
+
+
+/* =====================================================
+   TOGGLE ALL
+===================================================== */
+
+function toggleAllBirthdays(master) {
+
+  const boxes =
+    document.querySelectorAll(
+      ".birthday-checkbox"
+    );
+
+
+  boxes.forEach(function(box) {
+
+    box.checked =
+      master.checked;
+
+  });
+
+}
+
+
+/* =====================================================
+   GENERATE BIRTHDAY CARDS
+===================================================== */
+
+function generateBirthdayCards() {
+
+  const boxes =
+    document.querySelectorAll(
+      ".birthday-checkbox:checked"
+    );
+
+
+  if (boxes.length === 0) {
+
+    alert(
+      "पहले कम से कम एक student select करें."
+    );
+
+    return;
+
+  }
+
+
+  const selectedStudents = [];
+
+
+  boxes.forEach(function(box) {
+
+    const index =
+      Number(
+        box.getAttribute(
+          "data-index"
+        )
+      );
+
+
+    const student =
+      window.currentBirthdayStudents[
+        index
+      ];
+
+
+    if (student) {
+
+      selectedStudents.push(
+        student
+      );
+
+    }
+
+  });
+
+
+  createBirthdayPDF(
+    selectedStudents
+  );
+
+}
+
+
+/* =====================================================
+   CREATE BIRTHDAY PDF / PRINT
+===================================================== */
+
+function createBirthdayPDF(students) {
+
+  if (
+    !students ||
+    students.length === 0
+  ) {
+
+    alert(
+      "कोई student selected नहीं है."
+    );
+
+    return;
+
+  }
+
+
+  const printWindow =
+    window.open(
+      "",
+      "_blank"
+    );
+
+
+  if (!printWindow) {
+
+    alert(
+      "Popup blocked है. Browser में popup allow करें."
+    );
+
+    return;
+
+  }
+
+
+  let cardsHTML = "";
+
+
+  students.forEach(
+    function(student, index) {
+
+      cardsHTML += `
+
+        <div class="birthday-card">
+
+
+          <!-- DECORATIONS -->
+
+          <div class="balloon balloon1">
+            🎈
+          </div>
+
+          <div class="balloon balloon2">
+            🎈
+          </div>
+
+          <div class="star star1">
+            ⭐
+          </div>
+
+          <div class="star star2">
+            ⭐
+          </div>
+
+          <div class="star star3">
+            ✨
+          </div>
+
+
+          <!-- SCHOOL -->
+
+          <div class="card-school">
+
+            P.M.G. THAKAR ADARSH HIGH SCHOOL, KADI
+
+          </div>
+
+
+          <div class="card-address">
+
+            Near Bahuchar Mataji Temple,
+            Detroj Road, Kadi
+
+          </div>
+
+
+          <div class="line"></div>
+
+
+          <!-- BIRTHDAY -->
+
+          <div class="happy">
+
+            🎂 HAPPY BIRTHDAY 🎂
+
+          </div>
+
+
+          <div class="small-wish">
+
+            Wishing You a Wonderful Birthday!
+
+          </div>
+
+
+          <!-- NAME -->
+
+          <div class="student-name">
+
+            ${safe(student.name)}
+
+          </div>
+
+
+          <!-- INFO -->
+
+          <div class="info-container">
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                CLASS
+              </div>
+
+              <div class="info-value">
+                ${safe(student.className)}
+              </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <div class="info-label">
+                BIRTH DATE
+              </div>
+
+              <div class="info-value">
+                ${safe(student.dob)}
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- MESSAGE -->
+
+          <div class="card-message">
+
+            May your special day be filled with
+            happiness, smiles and beautiful memories.
+
+            <br>
+
+            Keep learning, keep smiling and keep shining! ✨
+
+          </div>
+
+
+          <!-- GUJARATI -->
+
+          <div class="gujarati-message">
+
+            શાળાના પરિવાર તરફથી તમને
+            જન્મદિવસની હાર્દિક શુભકામનાઓ.
+
+          </div>
+
+
+          <!-- FOOTER -->
+
+          <div class="card-footer">
+
+            🌟 With Best Wishes 🌟
+
+            <br>
+
+            <strong>
+              From Your School Family
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+        ${
+          (index + 1) % 2 === 0
+          ? '<div class="page-break"></div>'
+          : ''
+        }
+
+      `;
+
+    }
+  );
+
+
+  printWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+Birthday Wishes
+</title>
+
+
+<style>
+
+
+/* =====================================================
+   A4 PAGE
+===================================================== */
+
+@page {
+
+  size: A4 portrait;
+
+  margin: 0;
+
+}
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  background: white;
+
+  font-family:
+    Arial,
+    "Noto Sans",
+    sans-serif;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.birthday-card {
+
+  width: 190mm;
+
+  height: 135mm;
+
+  margin:
+    7mm auto;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    3px solid #ec4899;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7ed,
+      #fdf2f8,
+      #eff6ff
+    );
+
+  text-align: center;
+
+  padding:
+    10mm;
+
+  page-break-inside:
+    avoid;
+
+}
+
+
+/* =====================================================
+   SCHOOL
+===================================================== */
+
+.card-school {
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  color: #1d4ed8;
+
+  margin-top: 2mm;
+
+}
+
+
+.card-address {
+
+  font-size: 11px;
+
+  color: #475569;
+
+  margin-top: 2mm;
+
+}
+
+
+.line {
+
+  width: 70%;
+
+  height: 2px;
+
+  background:
+    #ec4899;
+
+  margin:
+    4mm auto;
+
+}
+
+
+/* =====================================================
+   BIRTHDAY
+===================================================== */
+
+.happy {
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  color: #db2777;
+
+  margin-top: 3mm;
+
+}
+
+
+.small-wish {
+
+  font-size: 14px;
+
+  color: #7c3aed;
+
+  margin-top: 2mm;
+
+}
+
+
+/* =====================================================
+   STUDENT NAME
+===================================================== */
+
+.student-name {
+
+  display: inline-block;
+
+  margin-top: 6mm;
+
+  padding:
+    4mm 14mm;
+
+  font-size: 29px;
+
+  font-weight: bold;
+
+  color: #1e3a8a;
+
+  background: white;
+
+  border:
+    3px solid #f59e0b;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 10px
+    rgba(0,0,0,.10);
+
+}
+
+
+/* =====================================================
+   INFO BOX
+===================================================== */
+
+.info-container {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10mm;
+
+  margin-top: 6mm;
+
+}
+
+
+.info-box {
+
+  min-width: 48mm;
+
+  padding: 3.5mm;
+
+  background: white;
+
+  border:
+    2px solid #60a5fa;
+
+  border-radius: 10px;
+
+}
+
+
+.info-label {
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  color: #64748b;
+
+}
+
+
+.info-value {
+
+  margin-top: 1.5mm;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  color: #111827;
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.card-message {
+
+  margin:
+    4mm auto 0;
+
+  max-width: 145mm;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  color: #475569;
+
+}
+
+
+.gujarati-message {
+
+  margin-top: 3mm;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  color: #be185d;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.card-footer {
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 5mm;
+
+  font-size: 11px;
+
+  color: #7c3aed;
+
+}
+
+
+/* =====================================================
+   DECORATIONS
+===================================================== */
+
+.balloon,
+.star {
+
+  position: absolute;
+
+  z-index: 1;
+
+}
+
+
+.balloon {
+
+  font-size: 30px;
+
+}
+
+
+.balloon1 {
+
+  top: 5mm;
+
+  left: 7mm;
+
+}
+
+
+.balloon2 {
+
+  top: 5mm;
+
+  right: 7mm;
+
+}
+
+
+.star {
+
+  font-size: 22px;
+
+}
+
+
+.star1 {
+
+  top: 30mm;
+
+  left: 8mm;
+
+}
+
+
+.star2 {
+
+  top: 30mm;
+
+  right: 8mm;
+
+}
+
+
+.star3 {
+
+  bottom: 18mm;
+
+  right: 10mm;
+
+}
+
+
+/* =====================================================
+   PAGE BREAK
+===================================================== */
+
+.page-break {
+
+  page-break-after:
+    always;
+
+}
+
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+@media print {
+
+  .birthday-card {
+
+    margin:
+      7mm auto;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+${cardsHTML}
+
+</body>
+
+</html>
+
+  `);
+
+
+  printWindow.document.close();
+
+
+  /*
+   * Open Print dialog
+   */
+
+  setTimeout(
+    function() {
+
+      printWindow.focus();
+
+      printWindow.print();
+
+    },
+    800
+  );
+
+}
+
+
+/* =====================================================
    SEARCH
 ===================================================== */
 
@@ -1077,7 +2141,9 @@ async function searchStudent() {
 
   const keyword =
     document
-      .getElementById("searchInput")
+      .getElementById(
+        "searchInput"
+      )
       .value
       .trim();
 
@@ -1095,7 +2161,9 @@ async function searchStudent() {
 
   try {
 
-    showLoader();
+    showLoader(
+      "Searching Student..."
+    );
 
 
     const data =
@@ -1121,7 +2189,7 @@ async function searchStudent() {
     hideLoader();
 
     alert(
-      "Search Error:\n" +
+      "Search Error:\n\n" +
       error.message
     );
 
@@ -1131,12 +2199,10 @@ async function searchStudent() {
 
 
 /* =====================================================
-   SEARCH RESULT
+   SEARCH RESULTS
 ===================================================== */
 
-function renderSearchResults(
-  data
-) {
+function renderSearchResults(data) {
 
   const container =
     document.getElementById(
@@ -1282,6 +2348,16 @@ async function loadClassList() {
     `;
 
 
+    if (
+      !data.classes ||
+      data.classes.length === 0
+    ) {
+
+      return;
+
+    }
+
+
     data.classes.forEach(
       function(className) {
 
@@ -1293,6 +2369,7 @@ async function loadClassList() {
 
         option.value =
           className;
+
 
         option.textContent =
           className;
@@ -1309,9 +2386,9 @@ async function loadClassList() {
 
   catch(error) {
 
-    alert(
-      "Class List Error:\n" +
-      error.message
+    console.error(
+      "Class list error:",
+      error
     );
 
   }
@@ -1320,7 +2397,7 @@ async function loadClassList() {
 
 
 /* =====================================================
-   CLASS STUDENTS
+   LOAD CLASS STUDENTS
 ===================================================== */
 
 async function loadClassStudents() {
@@ -1346,7 +2423,9 @@ async function loadClassStudents() {
 
   try {
 
-    showLoader();
+    showLoader(
+      "Loading Class Students..."
+    );
 
 
     const data =
@@ -1373,7 +2452,7 @@ async function loadClassStudents() {
     hideLoader();
 
     alert(
-      "Class Error:\n" +
+      "Class Error:\n\n" +
       error.message
     );
 
@@ -1383,12 +2462,10 @@ async function loadClassStudents() {
 
 
 /* =====================================================
-   CLASS RESULT
+   CLASS RESULTS
 ===================================================== */
 
-function renderClassResults(
-  data
-) {
+function renderClassResults(data) {
 
   const container =
     document.getElementById(
@@ -1643,6 +2720,7 @@ async function loadUpcomingBirthdays() {
         "upcomingResults"
       )
       .innerHTML =
+
         "Upcoming Birthday load नहीं हुआ.";
 
   }
@@ -1706,15 +2784,7 @@ window.addEventListener(
 
     showCurrentDate();
 
-    /*
-     * पहले class dropdown load करें
-     */
-
     await loadClassList();
-
-    /*
-     * फिर dashboard
-     */
 
     await loadDashboard();
 
@@ -1723,7 +2793,7 @@ window.addEventListener(
 
 </script>
 
-
 </body>
 
 </html>
+```
