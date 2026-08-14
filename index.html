@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #1f2937;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  background: linear-gradient(135deg,#2563eb,#4f46e5);
+  color: white;
+  padding: 22px 20px;
+  box-shadow: 0 3px 15px rgba(0,0,0,.15);
+}
+
+.header-inner {
+  max-width: 1250px;
+  margin: auto;
+}
+
+.school-name {
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.academic {
+  margin-top: 6px;
+  font-size: 15px;
+  opacity: .9;
+}
+
+.today-date {
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ================= STATS ================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+
+.stat-title {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.stat-value {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.blue {
+  border-left: 5px solid #2563eb;
+}
+
+.green {
+  border-left: 5px solid #16a34a;
+}
+
+.pink {
+  border-left: 5px solid #ec4899;
+}
+
+.orange {
+  border-left: 5px solid #f59e0b;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 9px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+.birthday-btn {
+  background: #ec4899;
+}
+
+.tomorrow-btn {
+  background: #f59e0b;
+}
+
+.refresh-btn {
+  background: #16a34a;
+}
+
+.print-btn {
+  background: #6b7280;
+}
+
+/* ================= SECTION ================= */
+
+.section {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+
+.section-title {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* ================= BIRTHDAY TITLE ================= */
+
+.birthday-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.cake {
+  font-size: 32px;
+}
+
+.birthday-count {
+  background: #fce7f3;
+  color: #be185d;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ================= TABLE ================= */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+th {
+  background: #eef2ff;
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+td {
+  padding: 11px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+tr:hover {
+  background: #f9fafb;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area {
+  display: flex;
+  gap: 10px;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+.search-area input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ================= CLASS ================= */
+
+.class-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+/* ================= EMPTY ================= */
+
+.empty {
+  text-align: center;
+  padding: 35px;
+  color: #6b7280;
+}
+
+/* ================= LOADER ================= */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-box {
+  background: white;
+  padding: 25px 35px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+  text-align: center;
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #ddd;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto auto 12px;
+}
+
+@keyframes spin {
+
+  100% {
+    transform: rotate(360deg);
+  }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px) {
+
+  .stats {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .school-name {
+    font-size: 21px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-value {
+    font-size: 25px;
+  }
+
+  button {
+    min-width: 135px;
+  }
+
+}
+
+@media(max-width:500px) {
+
+  .section {
+    padding: 14px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .search-area,
+  .class-area {
+    flex-direction: column;
+  }
+
+  .search-area button,
+  .class-area button {
+    width: 100%;
+  }
+
+}
+
+/* ================= PRINT ================= */
+
+@media print {
+
+  body {
+    background: white;
+  }
+
+  .header {
+    background: white;
+    color: black;
+    box-shadow: none;
+  }
+
+  .buttons,
+  .search-section,
+  .class-section,
+  .loader {
+    display: none !important;
+  }
+
+  .section,
+  .stat-card {
+    box-shadow: none;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= LOADER ================= -->
+
+<div class="loader" id="loader">
+
+  <div class="loader-box">
+
+    <div class="spinner"></div>
+
+    <div>Loading...</div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-inner">
+
+    <div class="school-name">
+      🏫 P.M.G. Thakar Adarsh High School, Kadi
+    </div>
+
+    <div class="academic">
+      Academic Year: 2026-27
+    </div>
+
+    <div class="today-date"
+         id="todayDate">
+      Loading...
+    </div>
+
+  </div>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ================= STATISTICS ================= -->
+
+<div class="stats">
+
+  <div class="stat-card blue">
+
+    <div class="stat-title">
+      👨‍🎓 Total Students
+    </div>
+
+    <div class="stat-value"
+         id="totalStudents">
+      -
+    </div>
+
+  </div>
+
+
+  <div class="stat-card green">
+
+    <div class="stat-title">
+      🏫 Total Classes
+    </div>
+
+    <div class="stat-value"
+         id="totalClasses">
+      -
+    </div>
+
+  </div>
+
+
+  <div class="stat-card pink">
+
+    <div class="stat-title">
+      🎂 Today's Birthday
+    </div>
+
+    <div class="stat-value"
+         id="todayBirthdayCount">
+      -
+    </div>
+
+  </div>
+
+
+  <div class="stat-card orange">
+
+    <div class="stat-title">
+      📅 Tomorrow
+    </div>
+
+    <div class="stat-value"
+         id="tomorrowBirthdayCount">
+      -
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= BUTTONS ================= -->
+
+<div class="buttons">
+
+  <button class="birthday-btn"
+          onclick="loadTodayBirthday()">
+
+    🎂 Today's Birthday
+
+  </button>
+
+
+  <button class="tomorrow-btn"
+          onclick="loadTomorrowBirthday()">
+
+    📅 Tomorrow's Birthday
+
+  </button>
+
+
+  <button class="refresh-btn"
+          onclick="loadDashboard()">
+
+    🔄 Refresh
+
+  </button>
+
+
+  <button class="print-btn"
+          onclick="window.print()">
+
+    🖨️ Print
+
+  </button>
+
+</div>
+
+
+<!-- ================= BIRTHDAY ================= -->
+
+<div class="section">
+
+  <div class="birthday-title">
+
+    <div class="cake">
+      🎂
+    </div>
+
+    <div>
+
+      <div class="section-title"
+           style="margin:0">
+
+        Today's Birthday
+
+      </div>
+
+      <div id="birthdayDate"></div>
+
+    </div>
+
+    <div class="birthday-count"
+         id="birthdayCount">
+
+      0 Students
+
+    </div>
+
+  </div>
+
+
+  <div id="birthdayTable">
+
+    <div class="empty">
+      Loading Birthday...
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="section search-section">
+
+  <div class="section-title">
+
+    🔍 Search Student
+
+  </div>
+
+
+  <div class="search-area">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Name / Roll / GR / Mobile"
+      onkeydown="if(event.key==='Enter') searchStudent()">
+
+
+    <button onclick="searchStudent()">
+
+      Search
+
+    </button>
+
+  </div>
+
+
+  <div id="searchResults"
+       style="margin-top:15px">
+
+  </div>
+
+</div>
+
+
+<!-- ================= CLASS ================= -->
+
+<div class="section class-section">
+
+  <div class="section-title">
+
+    🏫 Class Wise Students
+
+  </div>
+
+
+  <div class="class-area">
+
+    <select id="classSelect">
+
+      <option value="">
+        Select Class
+      </option>
+
+    </select>
+
+
+    <button onclick="loadClassStudents()">
+
+      View Students
+
+    </button>
+
+  </div>
+
+
+  <div id="classResults">
+
+  </div>
+
+</div>
+
+
+<!-- ================= UPCOMING ================= -->
+
+<div class="section">
+
+  <div class="section-title">
+
+    📅 Upcoming Birthdays – Next 7 Days
+
+  </div>
+
+
+  <div id="upcomingResults">
+
+    Loading...
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   IMPORTANT
+===================================================== */
+
+/*
+ * यहाँ अपना Apps Script Web App URL डालें.
+ *
+ * Example:
+ *
+ * https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+ */
+
+const API_URL =
+  "YOUR_APPS_SCRIPT_WEB_APP_URL";
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+function showLoader() {
+
+  document
+    .getElementById("loader")
+    .style.display = "flex";
+
+}
+
+
+function hideLoader() {
+
+  document
+    .getElementById("loader")
+    .style.display = "none";
+
+}
+
+
+/* =====================================================
+   API CALL
+===================================================== */
+
+async function api(action, params = {}) {
+
+  const url =
+    new URL(API_URL);
+
+
+  url.searchParams.set(
+    "action",
+    action
+  );
+
+
+  Object.keys(params).forEach(function(key) {
+
+    url.searchParams.set(
+      key,
+      params[key]
+    );
+
+  });
+
+
+  const response =
+    await fetch(url.toString());
+
+
+  if (!response.ok) {
+
+    throw new Error(
+      "API connection failed"
+    );
+
+  }
+
+
+  return await response.json();
+
+}
+
+
+/* =====================================================
+   CURRENT DATE
+===================================================== */
+
+function showCurrentDate() {
+
+  const date =
+    new Date();
+
+
+  document
+    .getElementById("todayDate")
+    .innerText =
+      date.toLocaleDateString(
+        "en-IN",
+        {
+          weekday: "long",
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        }
+      );
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function loadDashboard() {
+
+  try {
+
+    showLoader();
+
+
+    const data =
+      await api("dashboard");
+
+
+    if (!data.success) {
+
+      throw new Error(
+        data.error || "Dashboard error"
+      );
+
+    }
+
+
+    document
+      .getElementById("totalStudents")
+      .innerText =
+        data.totalStudents;
+
+
+    document
+      .getElementById("totalClasses")
+      .innerText =
+        data.totalClasses;
+
+
+    document
+      .getElementById("todayBirthdayCount")
+      .innerText =
+        data.todayBirthdays;
+
+
+    document
+      .getElementById("tomorrowBirthdayCount")
+      .innerText =
+        data.tomorrowBirthdays;
+
+
+    await loadTodayBirthday();
+
+    await loadUpcomingBirthdays();
+
+
+    hideLoader();
+
+  }
+
+  catch(error) {
+
+    hideLoader();
+
+    alert(
+      "Dashboard Error:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   TODAY BIRTHDAY
+===================================================== */
+
+async function loadTodayBirthday() {
+
+  try {
+
+    showLoader();
+
+
+    const data =
+      await api(
+        "todayBirthday"
+      );
+
+
+    renderBirthdayTable(
+      data,
+      "Today's Birthday"
+    );
+
+
+    hideLoader();
+
+  }
+
+  catch(error) {
+
+    hideLoader();
+
+    alert(
+      "Birthday Error:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   TOMORROW BIRTHDAY
+===================================================== */
+
+async function loadTomorrowBirthday() {
+
+  try {
+
+    showLoader();
+
+
+    const data =
+      await api(
+        "tomorrowBirthday"
+      );
+
+
+    renderBirthdayTable(
+      data,
+      "Tomorrow's Birthday"
+    );
+
+
+    hideLoader();
+
+  }
+
+  catch(error) {
+
+    hideLoader();
+
+    alert(
+      "Birthday Error:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER BIRTHDAY TABLE
+===================================================== */
+
+function renderBirthdayTable(
+  data,
+  title
+) {
+
+  document
+    .getElementById("birthdayDate")
+    .innerText =
+      data.date +
+      " • " +
+      data.day;
+
+
+  document
+    .getElementById("birthdayCount")
+    .innerText =
+      data.total +
+      " Students";
+
+
+  const container =
+    document.getElementById(
+      "birthdayTable"
+    );
+
+
+  if (
+    !data.students ||
+    data.students.length === 0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        🎂 आज कोई Birthday नहीं है।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Roll</th>
+
+            <th>GR</th>
+
+            <th>Student Name</th>
+
+            <th>Class</th>
+
+            <th>DOB</th>
+
+            <th>Mobile</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  data.students.forEach(
+    function(student) {
+
+      html += `
+
+        <tr>
+
+          <td>
+            ${safe(student.roll)}
+          </td>
+
+          <td>
+            ${safe(student.gr)}
+          </td>
+
+          <td>
+            <strong>
+              ${safe(student.name)}
+            </strong>
+          </td>
+
+          <td>
+            ${safe(student.className)}
+          </td>
+
+          <td>
+            ${safe(student.dob)}
+          </td>
+
+          <td>
+            ${safe(student.mobile)}
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+async function searchStudent() {
+
+  const keyword =
+    document
+      .getElementById("searchInput")
+      .value
+      .trim();
+
+
+  if (!keyword) {
+
+    alert(
+      "Name / Roll / GR / Mobile enter करें."
+    );
+
+    return;
+
+  }
+
+
+  try {
+
+    showLoader();
+
+
+    const data =
+      await api(
+        "search",
+        {
+          q: keyword
+        }
+      );
+
+
+    renderSearchResults(
+      data
+    );
+
+
+    hideLoader();
+
+  }
+
+  catch(error) {
+
+    hideLoader();
+
+    alert(
+      "Search Error:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   SEARCH RESULT
+===================================================== */
+
+function renderSearchResults(
+  data
+) {
+
+  const container =
+    document.getElementById(
+      "searchResults"
+    );
+
+
+  if (
+    !data.students ||
+    data.students.length === 0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        ❌ Student नहीं मिला।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Roll</th>
+
+            <th>GR</th>
+
+            <th>Name</th>
+
+            <th>Class</th>
+
+            <th>DOB</th>
+
+            <th>Mobile</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  data.students.forEach(
+    function(student) {
+
+      html += `
+
+        <tr>
+
+          <td>
+            ${safe(student.roll)}
+          </td>
+
+          <td>
+            ${safe(student.gr)}
+          </td>
+
+          <td>
+            <strong>
+              ${safe(student.name)}
+            </strong>
+          </td>
+
+          <td>
+            ${safe(student.className)}
+          </td>
+
+          <td>
+            ${safe(student.dob)}
+          </td>
+
+          <td>
+            ${safe(student.mobile)}
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+/* =====================================================
+   LOAD CLASS LIST
+===================================================== */
+
+async function loadClassList() {
+
+  try {
+
+    const data =
+      await api(
+        "classList"
+      );
+
+
+    const select =
+      document.getElementById(
+        "classSelect"
+      );
+
+
+    select.innerHTML = `
+
+      <option value="">
+        Select Class
+      </option>
+
+    `;
+
+
+    data.classes.forEach(
+      function(className) {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+
+        option.value =
+          className;
+
+        option.textContent =
+          className;
+
+
+        select.appendChild(
+          option
+        );
+
+      }
+    );
+
+  }
+
+  catch(error) {
+
+    alert(
+      "Class List Error:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   CLASS STUDENTS
+===================================================== */
+
+async function loadClassStudents() {
+
+  const className =
+    document
+      .getElementById(
+        "classSelect"
+      )
+      .value;
+
+
+  if (!className) {
+
+    alert(
+      "Please select a class."
+    );
+
+    return;
+
+  }
+
+
+  try {
+
+    showLoader();
+
+
+    const data =
+      await api(
+        "classStudents",
+        {
+          className:
+            className
+        }
+      );
+
+
+    renderClassResults(
+      data
+    );
+
+
+    hideLoader();
+
+  }
+
+  catch(error) {
+
+    hideLoader();
+
+    alert(
+      "Class Error:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   CLASS RESULT
+===================================================== */
+
+function renderClassResults(
+  data
+) {
+
+  const container =
+    document.getElementById(
+      "classResults"
+    );
+
+
+  if (
+    !data.students ||
+    data.students.length === 0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        इस class में student नहीं मिले।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div style="
+      margin-bottom:10px;
+      font-weight:bold;
+    ">
+
+      ${safe(data.className)}
+      -
+      ${data.total} Students
+
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Roll</th>
+
+            <th>GR</th>
+
+            <th>Name</th>
+
+            <th>DOB</th>
+
+            <th>Mobile</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  data.students.forEach(
+    function(student) {
+
+      html += `
+
+        <tr>
+
+          <td>
+            ${safe(student.roll)}
+          </td>
+
+          <td>
+            ${safe(student.gr)}
+          </td>
+
+          <td>
+            <strong>
+              ${safe(student.name)}
+            </strong>
+          </td>
+
+          <td>
+            ${safe(student.dob)}
+          </td>
+
+          <td>
+            ${safe(student.mobile)}
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+/* =====================================================
+   UPCOMING BIRTHDAYS
+===================================================== */
+
+async function loadUpcomingBirthdays() {
+
+  try {
+
+    const data =
+      await api(
+        "upcomingBirthdays",
+        {
+          days: 7
+        }
+      );
+
+
+    const container =
+      document.getElementById(
+        "upcomingResults"
+      );
+
+
+    if (
+      !data.students ||
+      data.students.length === 0
+    ) {
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          अगले 7 दिनों में Birthday नहीं है।
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    let html = `
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Date</th>
+
+              <th>Student Name</th>
+
+              <th>Class</th>
+
+              <th>Roll</th>
+
+              <th>Mobile</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+    `;
+
+
+    data.students.forEach(
+      function(student) {
+
+        html += `
+
+          <tr>
+
+            <td>
+              ${safe(student.date)}
+            </td>
+
+            <td>
+              <strong>
+                ${safe(student.name)}
+              </strong>
+            </td>
+
+            <td>
+              ${safe(student.className)}
+            </td>
+
+            <td>
+              ${safe(student.roll)}
+            </td>
+
+            <td>
+              ${safe(student.mobile)}
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    );
+
+
+    html += `
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    `;
+
+
+    container.innerHTML =
+      html;
+
+  }
+
+  catch(error) {
+
+    document
+      .getElementById(
+        "upcomingResults"
+      )
+      .innerHTML =
+        "Upcoming Birthday load नहीं हुआ.";
+
+  }
+
+}
+
+
+/* =====================================================
+   SECURITY
+===================================================== */
+
+function safe(value) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+
+    return "";
+
+  }
+
+
+  return String(value)
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    showCurrentDate();
+
+    /*
+     * पहले class dropdown load करें
+     */
+
+    await loadClassList();
+
+    /*
+     * फिर dashboard
+     */
+
+    await loadDashboard();
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
