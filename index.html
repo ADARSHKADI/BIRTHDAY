@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +11,22 @@
 
 <title>Student Birthday Dashboard</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
 
-      
+<!-- =====================================================
+     GOOGLE FONTS
+===================================================== -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+Gujarati:wght@500;600;700&family=Pacifico&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Rubik+Spray+Paint&display=swap"
+      rel="stylesheet">
+
+
 <style>
 
 /* =====================================================
@@ -28,7 +39,7 @@
 
 body {
   margin: 0;
-  font-family: Arial, "Noto Sans", sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   background: #f3f6fb;
   color: #1f2937;
 }
@@ -39,10 +50,19 @@ body {
 ===================================================== */
 
 .header {
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
   color: white;
+
   padding: 22px 20px;
-  box-shadow: 0 3px 15px rgba(0,0,0,.15);
+
+  box-shadow:
+    0 3px 15px rgba(0,0,0,.15);
 }
 
 .header-inner {
@@ -51,8 +71,9 @@ body {
 }
 
 .school-name {
+  font-family: "Montserrat", sans-serif;
   font-size: 27px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .school-address {
@@ -74,7 +95,7 @@ body {
 
 
 /* =====================================================
-   MAIN CONTAINER
+   MAIN
 ===================================================== */
 
 .container {
@@ -90,16 +111,23 @@ body {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4, 1fr);
+
   gap: 15px;
+
   margin-bottom: 20px;
 }
 
 .stat-card {
   background: white;
+
   padding: 20px;
+
   border-radius: 15px;
-  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,.08);
 }
 
 .stat-title {
@@ -109,7 +137,7 @@ body {
 
 .stat-value {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 8px;
 }
 
@@ -131,7 +159,7 @@ body {
 
 
 /* =====================================================
-   MAIN BUTTONS
+   BUTTONS
 ===================================================== */
 
 .buttons {
@@ -143,12 +171,22 @@ body {
 
 button {
   border: none;
-  padding: 12px 18px;
+
+  padding:
+    12px 18px;
+
   border-radius: 9px;
+
   color: white;
+
+  font-family: "Poppins", sans-serif;
+
   font-size: 14px;
-  font-weight: bold;
+
+  font-weight: 700;
+
   cursor: pointer;
+
   transition: .2s;
 }
 
@@ -170,7 +208,7 @@ button:hover {
 }
 
 .print-btn {
-  background: #6b7280;
+  background: #64748b;
 }
 
 
@@ -180,27 +218,35 @@ button:hover {
 
 .section {
   background: white;
+
   padding: 20px;
+
   border-radius: 15px;
+
   margin-bottom: 20px;
-  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,.08);
 }
 
 .section-title {
   font-size: 21px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
 
 /* =====================================================
-   BIRTHDAY HEADER
+   BIRTHDAY TITLE
 ===================================================== */
 
 .birthday-title {
   display: flex;
+
   align-items: center;
+
   gap: 12px;
+
   margin-bottom: 15px;
 }
 
@@ -214,22 +260,31 @@ button:hover {
 
 .birthday-count {
   background: #fce7f3;
+
   color: #be185d;
-  padding: 6px 12px;
+
+  padding:
+    6px 12px;
+
   border-radius: 20px;
+
   font-size: 13px;
-  font-weight: bold;
+
+  font-weight: 700;
 }
 
 
 /* =====================================================
-   CARD BUTTONS
+   CARD ACTIONS
 ===================================================== */
 
 .card-actions {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 10px;
+
   margin-bottom: 15px;
 }
 
@@ -242,13 +297,17 @@ button:hover {
 }
 
 .card-btn {
-  background: linear-gradient(
-    135deg,
-    #ec4899,
-    #f43f5e
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #f43f5e
+    );
+
   font-size: 15px;
-  padding: 13px 20px;
+
+  padding:
+    13px 20px;
 }
 
 
@@ -263,20 +322,28 @@ button:hover {
 
 table {
   width: 100%;
+
   border-collapse: collapse;
+
   min-width: 760px;
 }
 
 th {
   background: #eef2ff;
+
   padding: 12px;
+
   text-align: left;
+
   font-size: 14px;
 }
 
 td {
   padding: 11px;
-  border-bottom: 1px solid #e5e7eb;
+
+  border-bottom:
+    1px solid #e5e7eb;
+
   font-size: 14px;
 }
 
@@ -302,10 +369,19 @@ input[type="checkbox"] {
 
 .search-area input {
   flex: 1;
+
   padding: 13px;
-  border: 1px solid #d1d5db;
+
+  border:
+    1px solid #d1d5db;
+
   border-radius: 9px;
+
   font-size: 15px;
+
+  font-family:
+    "Poppins",
+    sans-serif;
 }
 
 .search-area input:focus {
@@ -326,9 +402,14 @@ input[type="checkbox"] {
 
 select {
   flex: 1;
+
   padding: 12px;
-  border: 1px solid #d1d5db;
+
+  border:
+    1px solid #d1d5db;
+
   border-radius: 9px;
+
   font-size: 15px;
 }
 
@@ -339,8 +420,11 @@ select {
 
 .empty {
   text-align: center;
+
   padding: 35px;
+
   color: #6b7280;
+
   font-size: 16px;
 }
 
@@ -351,30 +435,52 @@ select {
 
 .loader {
   position: fixed;
+
   inset: 0;
-  background: rgba(255,255,255,.75);
+
+  background:
+    rgba(255,255,255,.75);
+
   display: none;
+
   align-items: center;
+
   justify-content: center;
+
   z-index: 9999;
 }
 
 .loader-box {
   background: white;
-  padding: 25px 35px;
+
+  padding:
+    25px 35px;
+
   border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+
+  box-shadow:
+    0 5px 25px rgba(0,0,0,.2);
+
   text-align: center;
 }
 
 .spinner {
   width: 38px;
   height: 38px;
-  border: 4px solid #ddd;
-  border-top: 4px solid #2563eb;
+
+  border:
+    4px solid #ddd;
+
+  border-top:
+    4px solid #2563eb;
+
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: auto auto 12px;
+
+  animation:
+    spin 1s linear infinite;
+
+  margin:
+    auto auto 12px;
 }
 
 @keyframes spin {
@@ -393,7 +499,8 @@ select {
 @media(max-width:800px) {
 
   .stats {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .school-name {
@@ -455,7 +562,7 @@ select {
 
 
 /* =====================================================
-   PRINT DASHBOARD
+   DASHBOARD PRINT
 ===================================================== */
 
 @media print {
@@ -532,7 +639,8 @@ select {
       Academic Year: 2026-27
     </div>
 
-    <div class="today-date" id="todayDate">
+    <div class="today-date"
+         id="todayDate">
       Loading...
     </div>
 
@@ -654,7 +762,7 @@ select {
 
 
 <!-- ===================================================
-     TODAY BIRTHDAY SECTION
+     TODAY BIRTHDAY
 =================================================== -->
 
 <div class="section">
@@ -740,16 +848,14 @@ select {
 
 
 <!-- ===================================================
-     SEARCH SECTION
+     SEARCH
 =================================================== -->
 
 <div class="section search-section">
 
 
   <div class="section-title">
-
     🔍 Search Student
-
   </div>
 
 
@@ -767,9 +873,7 @@ select {
 
 
     <button onclick="searchStudent()">
-
       Search
-
     </button>
 
 
@@ -785,16 +889,14 @@ select {
 
 
 <!-- ===================================================
-     CLASS SECTION
+     CLASS WISE
 =================================================== -->
 
 <div class="section class-section">
 
 
   <div class="section-title">
-
     🏫 Class Wise Students
-
   </div>
 
 
@@ -835,16 +937,12 @@ select {
 
 
   <div class="section-title">
-
     📅 Upcoming Birthdays – Next 7 Days
-
   </div>
 
 
   <div id="upcomingResults">
-
     Loading...
-
   </div>
 
 </div>
@@ -861,13 +959,9 @@ select {
 ===================================================== */
 
 /*
- * IMPORTANT:
+ * IMPORTANT
  *
- * यहाँ अपना Apps Script Web App URL डालें.
- *
- * Example:
- *
- * https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+ * अपना Apps Script Web App /exec URL यहाँ डालें.
  */
 
 const API_URL =
@@ -875,7 +969,7 @@ const API_URL =
 
 
 /* =====================================================
-   CURRENT BIRTHDAY DATA
+   GLOBAL DATA
 ===================================================== */
 
 window.currentBirthdayStudents = [];
@@ -908,10 +1002,13 @@ function hideLoader() {
 
 
 /* =====================================================
-   API CALL
+   API
 ===================================================== */
 
-async function api(action, params = {}) {
+async function api(
+  action,
+  params = {}
+) {
 
   const url =
     new URL(API_URL);
@@ -923,14 +1020,16 @@ async function api(action, params = {}) {
   );
 
 
-  Object.keys(params).forEach(function(key) {
+  Object.keys(params).forEach(
+    function(key) {
 
-    url.searchParams.set(
-      key,
-      params[key]
-    );
+      url.searchParams.set(
+        key,
+        params[key]
+      );
 
-  });
+    }
+  );
 
 
   const response =
@@ -958,7 +1057,7 @@ async function api(action, params = {}) {
 
 
 /* =====================================================
-   CURRENT DATE
+   DATE
 ===================================================== */
 
 function showCurrentDate() {
@@ -968,7 +1067,9 @@ function showCurrentDate() {
 
 
   document
-    .getElementById("todayDate")
+    .getElementById(
+      "todayDate"
+    )
     .innerText =
       date.toLocaleDateString(
         "en-IN",
@@ -984,7 +1085,7 @@ function showCurrentDate() {
 
 
 /* =====================================================
-   LOAD DASHBOARD
+   DASHBOARD
 ===================================================== */
 
 async function loadDashboard() {
@@ -1068,7 +1169,7 @@ async function loadDashboard() {
 
 
 /* =====================================================
-   LOAD TODAY BIRTHDAY
+   TODAY BIRTHDAY
 ===================================================== */
 
 async function loadTodayBirthday() {
@@ -1110,7 +1211,7 @@ async function loadTodayBirthday() {
 
 
 /* =====================================================
-   LOAD TOMORROW BIRTHDAY
+   TOMORROW
 ===================================================== */
 
 async function loadTomorrowBirthday() {
@@ -1152,10 +1253,12 @@ async function loadTomorrowBirthday() {
 
 
 /* =====================================================
-   RENDER BIRTHDAY TABLE
+   BIRTHDAY TABLE
 ===================================================== */
 
-function renderBirthdayTable(data) {
+function renderBirthdayTable(
+  data
+) {
 
   document
     .getElementById(
@@ -1181,10 +1284,6 @@ function renderBirthdayTable(data) {
       "birthdayTable"
     );
 
-
-  /*
-   * Save current students
-   */
 
   window.currentBirthdayStudents =
     data.students || [];
@@ -1251,7 +1350,7 @@ function renderBirthdayTable(data) {
 
 
   data.students.forEach(
-    function(student, index) {
+    function(student,index) {
 
       html += `
 
@@ -1278,11 +1377,9 @@ function renderBirthdayTable(data) {
 
 
           <td>
-
             <strong>
               ${safe(student.name)}
             </strong>
-
           </td>
 
 
@@ -1348,11 +1445,13 @@ function selectAllBirthdays() {
   }
 
 
-  boxes.forEach(function(box) {
+  boxes.forEach(
+    function(box) {
 
-    box.checked = true;
+      box.checked = true;
 
-  });
+    }
+  );
 
 
   const master =
@@ -1382,11 +1481,13 @@ function clearAllBirthdays() {
     );
 
 
-  boxes.forEach(function(box) {
+  boxes.forEach(
+    function(box) {
 
-    box.checked = false;
+      box.checked = false;
 
-  });
+    }
+  );
 
 
   const master =
@@ -1405,10 +1506,12 @@ function clearAllBirthdays() {
 
 
 /* =====================================================
-   TOGGLE ALL
+   TOGGLE
 ===================================================== */
 
-function toggleAllBirthdays(master) {
+function toggleAllBirthdays(
+  master
+) {
 
   const boxes =
     document.querySelectorAll(
@@ -1416,18 +1519,20 @@ function toggleAllBirthdays(master) {
     );
 
 
-  boxes.forEach(function(box) {
+  boxes.forEach(
+    function(box) {
 
-    box.checked =
-      master.checked;
+      box.checked =
+        master.checked;
 
-  });
+    }
+  );
 
 }
 
 
 /* =====================================================
-   GENERATE BIRTHDAY CARDS
+   GENERATE CARDS
 ===================================================== */
 
 function generateBirthdayCards() {
@@ -1449,62 +1554,52 @@ function generateBirthdayCards() {
   }
 
 
-  const selectedStudents = [];
+  const students = [];
 
 
-  boxes.forEach(function(box) {
+  boxes.forEach(
+    function(box) {
 
-    const index =
-      Number(
-        box.getAttribute(
-          "data-index"
-        )
-      );
-
-
-    const student =
-      window.currentBirthdayStudents[
-        index
-      ];
+      const index =
+        Number(
+          box.getAttribute(
+            "data-index"
+          )
+        );
 
 
-    if (student) {
+      const student =
+        window.currentBirthdayStudents[
+          index
+        ];
 
-      selectedStudents.push(
-        student
-      );
+
+      if (student) {
+
+        students.push(
+          student
+        );
+
+      }
 
     }
-
-  });
+  );
 
 
   createBirthdayPDF(
-    selectedStudents
+    students
   );
 
 }
 
 
 /* =====================================================
-   CREATE BIRTHDAY PDF / PRINT
+   BIRTHDAY PDF
 ===================================================== */
 
-function createBirthdayPDF(students) {
-
-  if (
-    !students ||
-    students.length === 0
-  ) {
-
-    alert(
-      "कोई student selected नहीं है."
-    );
-
-    return;
-
-  }
-
+function createBirthdayPDF(
+  students
+) {
 
   const printWindow =
     window.open(
@@ -1528,33 +1623,32 @@ function createBirthdayPDF(students) {
 
 
   students.forEach(
-    function(student, index) {
+    function(student,index) {
 
       cardsHTML += `
 
         <div class="birthday-card">
 
 
-          <!-- DECORATIONS -->
-
-          <div class="balloon balloon1">
+          <div class="balloon balloon-left">
             🎈
           </div>
 
-          <div class="balloon balloon2">
+          <div class="balloon balloon-right">
             🎈
           </div>
 
-          <div class="star star1">
+
+          <div class="star star-left">
             ⭐
           </div>
 
-          <div class="star star2">
-            ⭐
-          </div>
-
-          <div class="star star3">
+          <div class="star star-right">
             ✨
+          </div>
+
+          <div class="star star-bottom">
+            ⭐
           </div>
 
 
@@ -1575,14 +1669,14 @@ function createBirthdayPDF(students) {
           </div>
 
 
-          <div class="line"></div>
+          <div class="card-divider"></div>
 
 
-          <!-- BIRTHDAY -->
+          <!-- HAPPY BIRTHDAY -->
 
-          <div class="happy">
+          <div class="happy-birthday">
 
-            🎂 HAPPY BIRTHDAY 🎂
+            HAPPY BIRTHDAY
 
           </div>
 
@@ -1603,7 +1697,7 @@ function createBirthdayPDF(students) {
           </div>
 
 
-          <!-- INFO -->
+          <!-- CLASS / DOB -->
 
           <div class="info-container">
 
@@ -1615,7 +1709,9 @@ function createBirthdayPDF(students) {
               </div>
 
               <div class="info-value">
+
                 ${safe(student.className)}
+
               </div>
 
             </div>
@@ -1628,7 +1724,9 @@ function createBirthdayPDF(students) {
               </div>
 
               <div class="info-value">
+
                 ${safe(student.dob)}
+
               </div>
 
             </div>
@@ -1669,9 +1767,7 @@ function createBirthdayPDF(students) {
 
             <br>
 
-            <strong>
-              From Your School Family
-            </strong>
+            From Your School Family
 
           </div>
 
@@ -1706,11 +1802,23 @@ Birthday Wishes
 </title>
 
 
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+Gujarati:wght@500;600;700&family=Pacifico&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&family=Rubik+Spray+Paint&display=swap"
+      rel="stylesheet">
+
+
 <style>
 
 
 /* =====================================================
-   A4 PAGE
+   A4
 ===================================================== */
 
 @page {
@@ -1723,9 +1831,7 @@ Birthday Wishes
 
 
 * {
-
   box-sizing: border-box;
-
 }
 
 
@@ -1736,11 +1842,6 @@ body {
   padding: 0;
 
   background: white;
-
-  font-family:
-    Arial,
-    "Noto Sans",
-    sans-serif;
 
 }
 
@@ -1762,12 +1863,27 @@ body {
 
   overflow: hidden;
 
+  text-align: center;
+
   border:
     3px solid #ec4899;
 
-  border-radius: 14px;
+  border-radius: 16px;
 
   background:
+
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255,255,255,.95) 0,
+      rgba(255,255,255,0) 18%
+    ),
+
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(255,255,255,.95) 0,
+      rgba(255,255,255,0) 20%
+    ),
+
     linear-gradient(
       135deg,
       #fff7ed,
@@ -1775,10 +1891,8 @@ body {
       #eff6ff
     );
 
-  text-align: center;
-
   padding:
-    10mm;
+    9mm 12mm;
 
   page-break-inside:
     avoid;
@@ -1787,69 +1901,154 @@ body {
 
 
 /* =====================================================
-   SCHOOL
+   INNER BORDER
 ===================================================== */
 
-.card-school {
+.birthday-card::before {
 
-  font-size: 20px;
+  content: "";
 
-  font-weight: bold;
+  position: absolute;
 
-  color: #1d4ed8;
+  inset: 4mm;
 
-  margin-top: 2mm;
+  border:
+    1.5px dashed #f59e0b;
 
-}
+  border-radius: 12px;
 
-
-.card-address {
-
-  font-size: 11px;
-
-  color: #475569;
-
-  margin-top: 2mm;
-
-}
-
-
-.line {
-
-  width: 70%;
-
-  height: 2px;
-
-  background:
-    #ec4899;
-
-  margin:
-    4mm auto;
+  pointer-events: none;
 
 }
 
 
 /* =====================================================
-   BIRTHDAY
+   SCHOOL NAME
 ===================================================== */
 
-.happy {
-  font-family: "Rubik Spray Paint", cursive;
-  font-size: 38px;
-  font-weight: 400;
-  color: #db2777;
-  margin-top: 3mm;
-  letter-spacing: 1px;
+.card-school {
+
+  position: relative;
+
+  z-index: 2;
+
+  font-family:
+    "Montserrat",
+    sans-serif;
+
+  font-size: 19px;
+
+  font-weight: 800;
+
+  letter-spacing: .4px;
+
+  color: #1d4ed8;
+
+  margin-top: 1mm;
+
 }
 
 
-.small-wish {
+/* =====================================================
+   ADDRESS
+===================================================== */
 
-  font-size: 14px;
+.card-address {
 
-  color: #7c3aed;
+  position: relative;
+
+  z-index: 2;
 
   margin-top: 2mm;
+
+  font-family:
+    "Poppins",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  color: #475569;
+
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.card-divider {
+
+  width: 62%;
+
+  height: 2px;
+
+  margin:
+    4mm auto 3mm;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ec4899,
+      #f59e0b,
+      #ec4899,
+      transparent
+    );
+
+}
+
+
+/* =====================================================
+   HAPPY BIRTHDAY
+===================================================== */
+
+.happy-birthday {
+
+  position: relative;
+
+  z-index: 2;
+
+  font-family:
+    "Rubik Spray Paint",
+    cursive;
+
+  font-size: 38px;
+
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  color: #db2777;
+
+  text-shadow:
+    2px 2px 0 #fbcfe8;
+
+  margin-top: 2mm;
+
+}
+
+
+/* =====================================================
+   SMALL WISH
+===================================================== */
+
+.small-wish {
+
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 2mm;
+
+  font-family:
+    "Pacifico",
+    cursive;
+
+  font-size: 17px;
+
+  color: #7c3aed;
 
 }
 
@@ -1860,71 +2059,102 @@ body {
 
 .student-name {
 
+  position: relative;
+
+  z-index: 2;
+
   display: inline-block;
 
-  margin-top: 6mm;
+  margin-top: 5mm;
 
   padding:
-    4mm 14mm;
+    4mm 16mm;
 
-  font-size: 29px;
+  min-width: 95mm;
 
-  font-weight: bold;
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: .5px;
 
   color: #1e3a8a;
 
-  background: white;
+  background:
+    rgba(255,255,255,.95);
 
   border:
     3px solid #f59e0b;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
   box-shadow:
-    0 3px 10px
+    0 4px 12px
     rgba(0,0,0,.10);
 
 }
 
 
 /* =====================================================
-   INFO BOX
+   INFO
 ===================================================== */
 
 .info-container {
+
+  position: relative;
+
+  z-index: 2;
 
   display: flex;
 
   justify-content: center;
 
-  gap: 10mm;
+  align-items: center;
 
-  margin-top: 6mm;
+  gap: 9mm;
+
+  margin-top: 5mm;
 
 }
 
 
 .info-box {
 
-  min-width: 48mm;
+  min-width: 47mm;
 
-  padding: 3.5mm;
+  padding:
+    3mm 7mm;
 
-  background: white;
+  background:
+    rgba(255,255,255,.96);
 
   border:
     2px solid #60a5fa;
 
   border-radius: 10px;
 
+  box-shadow:
+    0 2px 7px
+    rgba(0,0,0,.07);
+
 }
 
 
 .info-label {
 
-  font-size: 10px;
+  font-family:
+    "Montserrat",
+    sans-serif;
 
-  font-weight: bold;
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
 
   color: #64748b;
 
@@ -1933,11 +2163,15 @@ body {
 
 .info-value {
 
-  margin-top: 1.5mm;
+  margin-top: 1mm;
+
+  font-family:
+    "Poppins",
+    sans-serif;
 
   font-size: 17px;
 
-  font-weight: bold;
+  font-weight: 700;
 
   color: #111827;
 
@@ -1950,27 +2184,47 @@ body {
 
 .card-message {
 
+  position: relative;
+
+  z-index: 2;
+
   margin:
     4mm auto 0;
 
   max-width: 145mm;
 
-  font-size: 11px;
+  font-family:
+    "Poppins",
+    sans-serif;
 
-  line-height: 1.4;
+  font-size: 10px;
+
+  line-height: 1.45;
 
   color: #475569;
 
 }
 
 
+/* =====================================================
+   GUJARATI
+===================================================== */
+
 .gujarati-message {
 
-  margin-top: 3mm;
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 2.5mm;
+
+  font-family:
+    "Noto Sans Gujarati",
+    sans-serif;
 
   font-size: 13px;
 
-  font-weight: bold;
+  font-weight: 700;
 
   color: #be185d;
 
@@ -1991,7 +2245,17 @@ body {
 
   bottom: 5mm;
 
-  font-size: 11px;
+  z-index: 2;
+
+  font-family:
+    "Montserrat",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: .3px;
 
   color: #7c3aed;
 
@@ -2002,78 +2266,78 @@ body {
    DECORATIONS
 ===================================================== */
 
-.balloon,
+.balloon {
+
+  position: absolute;
+
+  z-index: 3;
+
+  font-size: 31px;
+
+}
+
+
+.balloon-left {
+
+  top: 5mm;
+
+  left: 8mm;
+
+  transform:
+    rotate(-8deg);
+
+}
+
+
+.balloon-right {
+
+  top: 5mm;
+
+  right: 8mm;
+
+  transform:
+    rotate(8deg);
+
+}
+
+
 .star {
 
   position: absolute;
 
-  z-index: 1;
+  z-index: 3;
+
+  font-size: 20px;
 
 }
 
 
-.balloon {
+.star-left {
 
-  font-size: 30px;
+  left: 10mm;
 
-}
-
-
-.balloon1 {
-
-  top: 5mm;
-
-  left: 7mm;
+  top: 39mm;
 
 }
 
 
-.balloon2 {
-
-  top: 5mm;
-
-  right: 7mm;
-
-}
-
-
-.star {
-
-  font-size: 22px;
-
-}
-
-
-.star1 {
-
-  top: 30mm;
-
-  left: 8mm;
-
-}
-
-
-.star2 {
-
-  top: 30mm;
-
-  right: 8mm;
-
-}
-
-
-.star3 {
-
-  bottom: 18mm;
+.star-right {
 
   right: 10mm;
 
+  top: 39mm;
+
 }
 
 
-/* =====================================================
-   PAGE BREAK
-===================================================== */
+.star-bottom {
+
+  right: 15mm;
+
+  bottom: 13mm;
+
+}
+
 
 .page-break {
 
@@ -2082,10 +2346,6 @@ body {
 
 }
 
-
-/* =====================================================
-   PRINT
-===================================================== */
 
 @media print {
 
@@ -2117,10 +2377,6 @@ ${cardsHTML}
   printWindow.document.close();
 
 
-  /*
-   * Open Print dialog
-   */
-
   setTimeout(
     function() {
 
@@ -2129,7 +2385,7 @@ ${cardsHTML}
       printWindow.print();
 
     },
-    800
+    1200
   );
 
 }
@@ -2204,7 +2460,9 @@ async function searchStudent() {
    SEARCH RESULTS
 ===================================================== */
 
-function renderSearchResults(data) {
+function renderSearchResults(
+  data
+) {
 
   const container =
     document.getElementById(
@@ -2322,7 +2580,7 @@ function renderSearchResults(data) {
 
 
 /* =====================================================
-   LOAD CLASS LIST
+   CLASS LIST
 ===================================================== */
 
 async function loadClassList() {
@@ -2399,7 +2657,7 @@ async function loadClassList() {
 
 
 /* =====================================================
-   LOAD CLASS STUDENTS
+   CLASS STUDENTS
 ===================================================== */
 
 async function loadClassStudents() {
@@ -2467,7 +2725,9 @@ async function loadClassStudents() {
    CLASS RESULTS
 ===================================================== */
 
-function renderClassResults(data) {
+function renderClassResults(
+  data
+) {
 
   const container =
     document.getElementById(
@@ -2722,7 +2982,6 @@ async function loadUpcomingBirthdays() {
         "upcomingResults"
       )
       .innerHTML =
-
         "Upcoming Birthday load नहीं हुआ.";
 
   }
@@ -2731,7 +2990,7 @@ async function loadUpcomingBirthdays() {
 
 
 /* =====================================================
-   SECURITY
+   SAFE OUTPUT
 ===================================================== */
 
 function safe(value) {
