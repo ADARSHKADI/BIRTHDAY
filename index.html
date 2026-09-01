@@ -1923,7 +1923,8 @@ body {
   z-index: 2;
 
   font-family:
-    "Montserrat",
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
     sans-serif;
 
   font-size: 19px;
@@ -1952,7 +1953,8 @@ body {
   margin-top: 2mm;
 
   font-family:
-    "Poppins",
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
     sans-serif;
 
   font-size: 10px;
@@ -2033,8 +2035,9 @@ body {
   margin-top: 2mm;
 
   font-family:
-    "Pacifico",
-    cursive;
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
+    sans-serif;
 
   font-size: 17px;
 
@@ -2063,8 +2066,9 @@ body {
   min-width: 85mm;
 
   font-family:
-    "Playfair Display",
-    serif;
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
+    sans-serif;
 
   font-size: 25px;
 
@@ -2137,7 +2141,8 @@ body {
 .info-label {
 
   font-family:
-    "Montserrat",
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
     sans-serif;
 
   font-size: 9px;
@@ -2156,7 +2161,8 @@ body {
   margin-top: 1mm;
 
   font-family:
-    "Poppins",
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
     sans-serif;
 
   font-size: 17px;
@@ -2184,7 +2190,8 @@ body {
   max-width: 145mm;
 
   font-family:
-    "Poppins",
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
     sans-serif;
 
   font-size: 11px;
@@ -2240,7 +2247,8 @@ body {
   z-index: 2;
 
   font-family:
-    "Montserrat",
+    "Baloo Bhai 2",
+    "Noto Sans Gujarati",
     sans-serif;
 
   font-size: 10px;
@@ -2369,14 +2377,25 @@ ${cardsHTML}
   printWindow.document.close();
 
 
+  const printWhenFontsReady = async function() {
+
+    try {
+
+      if (printWindow.document.fonts) {
+        await printWindow.document.fonts.ready;
+      }
+
+    } catch (e) {}
+
+    printWindow.focus();
+
+    printWindow.print();
+
+  };
+
+
   setTimeout(
-    function() {
-
-      printWindow.focus();
-
-      printWindow.print();
-
-    },
+    printWhenFontsReady,
     1200
   );
 
