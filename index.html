@@ -1629,12 +1629,12 @@ function createBirthdayPDF(
         <div class="birthday-card">
 
 
-          <div class="balloon balloon-left">
-            🎈
+          <div class="card-header-image card-left-image">
+            <img src="bharatmata.png" alt="Bharat Mata">
           </div>
 
-          <div class="balloon balloon-right">
-            🎈
+          <div class="card-header-image card-right-image">
+            <img src="LOGO.png" alt="School Logo">
           </div>
 
 
@@ -2266,37 +2266,50 @@ body {
    DECORATIONS
 ===================================================== */
 
-.balloon {
+.card-header-image {
 
   position: absolute;
 
   z-index: 3;
 
-  font-size: 31px;
+  top: 4mm;
+
+  width: 30mm;
+
+  height: 30mm;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 
 }
 
 
-.balloon-left {
+.card-header-image img {
 
-  top: 5mm;
+  width: 100%;
 
-  left: 8mm;
+  height: 100%;
 
-  transform:
-    rotate(-8deg);
+  object-fit: contain;
+
+  display: block;
 
 }
 
 
-.balloon-right {
+.card-left-image {
 
-  top: 5mm;
+  left: 7mm;
 
-  right: 8mm;
+}
 
-  transform:
-    rotate(8deg);
+
+.card-right-image {
+
+  right: 7mm;
 
 }
 
