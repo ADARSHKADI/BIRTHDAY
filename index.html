@@ -1144,9 +1144,11 @@ async function loadDashboard() {
         data.tomorrowBirthdays;
 
 
-    await loadTodayBirthday();
-
-    await loadUpcomingBirthdays();
+    // Dono API requests ko parallel mein chalao
+    await Promise.all([
+      loadTodayBirthday(),
+      loadUpcomingBirthdays()
+    ]);
 
 
     hideLoader();
@@ -1618,6 +1620,11 @@ function createBirthdayPDF(
   }
 
 
+  // Birthday cards open in a new about:blank window.
+  // Build absolute image URLs from the current GitHub Pages URL.
+  const bharatMataURL = new URL("bharatmata.png", window.location.href).href;
+  const logoURL = new URL("LOGO.png", window.location.href).href;
+
   let cardsHTML = "";
 
 
@@ -1630,11 +1637,11 @@ function createBirthdayPDF(
 
 
           <div class="card-header-image card-left-image">
-            <img src="bharatmata.png" alt="Bharat Mata">
+            <img src="${bharatMataURL}" alt="Bharat Mata">
           </div>
 
           <div class="card-header-image card-right-image">
-            <img src="LOGO.png" alt="School Logo">
+            <img src="${logoURL}" alt="School Logo">
           </div>
 
 
@@ -1923,11 +1930,10 @@ body {
   z-index: 2;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
+    "Montserrat",
     sans-serif;
 
-  font-size: 23px;
+  font-size: 19px;
 
   font-weight: 800;
 
@@ -1953,8 +1959,7 @@ body {
   margin-top: 2mm;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
+    "Poppins",
     sans-serif;
 
   font-size: 10px;
@@ -2035,11 +2040,10 @@ body {
   margin-top: 2mm;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
-    sans-serif;
+    "Pacifico",
+    cursive;
 
-  font-size: 25px;
+  font-size: 17px;
 
   color: #7c3aed;
 
@@ -2066,9 +2070,8 @@ body {
   min-width: 85mm;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
-    sans-serif;
+    "Playfair Display",
+    serif;
 
   font-size: 25px;
 
@@ -2141,8 +2144,7 @@ body {
 .info-label {
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
+    "Montserrat",
     sans-serif;
 
   font-size: 9px;
@@ -2161,8 +2163,7 @@ body {
   margin-top: 1mm;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
+    "Poppins",
     sans-serif;
 
   font-size: 17px;
@@ -2190,11 +2191,10 @@ body {
   max-width: 145mm;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
+    "Poppins",
     sans-serif;
 
-  font-size: 14px;
+  font-size: 11px;
 
   line-height: 1.55;
 
@@ -2247,8 +2247,7 @@ body {
   z-index: 2;
 
   font-family:
-    "Baloo Bhai 2",
-    "Noto Sans Gujarati",
+    "Montserrat",
     sans-serif;
 
   font-size: 10px;
@@ -2286,7 +2285,6 @@ body {
 
 }
 
-
 .card-header-image img {
 
   width: 100%;
@@ -2299,13 +2297,11 @@ body {
 
 }
 
-
 .card-left-image {
 
   left: 7mm;
 
 }
-
 
 .card-right-image {
 
@@ -2390,25 +2386,14 @@ ${cardsHTML}
   printWindow.document.close();
 
 
-  const printWhenFontsReady = async function() {
-
-    try {
-
-      if (printWindow.document.fonts) {
-        await printWindow.document.fonts.ready;
-      }
-
-    } catch (e) {}
-
-    printWindow.focus();
-
-    printWindow.print();
-
-  };
-
-
   setTimeout(
-    printWhenFontsReady,
+    function() {
+
+      printWindow.focus();
+
+      printWindow.print();
+
+    },
     1200
   );
 
@@ -3069,9 +3054,11 @@ window.addEventListener(
 
     showCurrentDate();
 
-    await loadClassList();
-
-    await loadDashboard();
+    // Class list aur dashboard ko parallel mein load karo
+    await Promise.all([
+      loadClassList(),
+      loadDashboard()
+    ]);
 
   }
 );
